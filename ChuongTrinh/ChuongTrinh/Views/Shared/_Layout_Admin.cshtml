@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from truelysell-admin.dreamguystech.com/template/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 14:21:50 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>Trang quản trị</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="~/wwwroot/Admin/plugins/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet"
+          href="~/wwwroot/Admin/plugins/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Admin/plugins/fontawesome/css/all.min.css" />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/wwwroot/Admin/css/animate.min.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/wwwroot/Admin/css/admin.css" />
+</head>
+
+<body>
+    <div>
+        <div class="main-wrapper">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="dashboard.html" class="logo logo-small">
+                        <img src="https://www.google.com/search?q=logo+s%E1%BB%AFa+kun&rlz=1C1FKPE_viVN963VN963&sxsrf=AOaemvIHL23FXZdhNf702kvSidRX-Tz6NA:1640163431475&tbm=isch&source=iu&ictx=1&fir=bH-RwcL1jdCzmM%252CLE3o299CcVNrhM%252C_%253BsZqwhEj74-yrCM%252Cv63oebSmihxobM%252C_%253BExC6IvpaxjmUUM%252CLE3o299CcVNrhM%252C_%253BpxMAfdudAfx8DM%252CGbmg9TflTQ7CpM%252C_%253B-4RhoVQsptFp2M%252CLE3o299CcVNrhM%252C_%253BgZ8jEvzgtbDq3M%252CUUJrdJe5HHyw8M%252C_%253BQT7EJvUD7J-dhM%252Cg-qoiTGbpG6_lM%252C_%253BvPriaOQCemjB-M%252CVLt2vTWM2bLPOM%252C_&vet=1&usg=AI4_-kRnpV_Kfm2_Iy8JQFHSjNRRTSf0rw&sa=X&ved=2ahUKEwiS_dL1hPf0AhVd_XMBHa0eC9MQ9QF6BAgOEAE&biw=1536&bih=706&dpr=1.25#imgrc=-4RhoVQsptFp2M"
+                             alt="Logo"
+                             width="30"
+                             height="30" />
+                    </a>
+                </div>
+                <a href="javascript:void(0);" id="toggle_btn">
+                    <i class="fas fa-align-left"></i>
+                </a>
+                <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                    <i class="fas fa-align-left"></i>
+                </a>
+
+                <ul class="nav user-menu">
+                    <!-- User Menu -->
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0)"
+                           class="dropdown-toggle user-link nav-link"
+                           data-toggle="dropdown">
+                            <span class="user-img">
+                                <img class="rounded-circle"
+                                     src="~/wwwroot/Admin/img/profiles/Anhuser.jpg"
+                                     width="40"
+                                     alt="Admin" />
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="index.html">Đăng xuất</a>
+                        </div>
+                    </li>
+                    <!-- /User Menu -->
+                </ul>
+            </div>
+            <!-- /Header -->
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-logo">
+                    <a href="dashboard.html">
+                        <img src="~/wwwroot/Admin/img/profiles/logo.PNG"
+                             class="img-fluid"
+                             alt="" />
+                    </a>
+                </div>
+                <div class="sidebar-inner slimscroll">
+                    <div id="sidebar-menu" class="sidebar-menu">
+                        <ul>
+                            <li class="active">
+                                <a href="dashboard.html"><i class="fas fa-columns"></i><span>Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a href="categories.html">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>Quản lý danh mục</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="products.html">
+                                    <i class="fab fa-buffer"></i>
+                                    <span>Quản lý sản phẩm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manage-order.html">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Quản lý đơn hàng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="account.html"><i class="fas fa-user"></i><span>Quản lý tài khoản</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /Sidebar -->
+
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.5.0.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/admin.js"></script>
+</body>
+
+<!-- Mirrored from truelysell-admin.dreamguystech.com/template/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 14:22:07 GMT -->
+</html>
+

@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from mironmahmud.com/organe/assets/ltr/category.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 14:24:31 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type"
+      content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="mironcoder" />
+    <meta name="email" content="mironcoder@gmail.com" />
+    <meta name="profile" content="https://themeforest.net/user/mironcoder" />
+    <meta name="template" content="Organe" />
+    <meta name="title" content="Organe - Organic Food HTML Template" />
+    <meta name="keywords"
+          content="organe, organic, food, shop, ecommerce, store, html, agriculture, vegetable, organic food, organic product, organic farm, organic life, organic shop, food store" />
+    <title>SỮA KUN</title>
+    <link rel="icon" href="~/wwwroot/Client/images/favicon.png" />
+    <link rel="stylesheet" href="~/wwwroot/Client/fonts/flaticon/flaticon.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/fonts/icofont/icofont.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/fonts/fontawesome/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/css/vendor/nice-select.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/css/vendor/venobox.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/css/vendor/slick.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/Client/css/custom/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="backdrop"></div>
+
+    <section class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group">
+                    <button class="header-user">
+                        <img src="~/wwwroot/Client/images/Anhuser.jpg" alt="user" />
+                    </button><a href="index.html">
+                        <img src="https://theme.hstatic.net/200000077559/1000684446/14/logo.png?v=10"
+                             alt="logo" />
+                    </a><button class="header-src"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="index.html" class="header-logo">
+                    <img src="https://theme.hstatic.net/200000077559/1000684446/14/logo.png?v=10"
+                         alt="logo" />
+                </a><a href="@Url.Action("Login","Main") " class="header-widget" title="My Account"><img src="~/wwwroot/Client/images/Anhuser.jpg" alt="user" />
+                @if (Session["UserName"] == null)
+                {
+                    <a href="@Url.Action("Login","Main")"><span>Đăng nhập</span></a>
+                }
+                else { 
+                    <span>@Session["UserName"]</span>
+                }
+                </a>
+                <form class="header-form">
+                    <input type="text" placeholder="Tìm kiếm..." /><button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <div class="header-widget-group">
+                    <a class="header-widget header-cart"
+                       title="Cartlist"
+                       href="@Url.Action("Cart","Main")">
+                        <i class="fas fa-shopping-basket"></i><sup>9+</sup><span>Tổng<small>120.000đ</small></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start menu pc -->
+    <nav class="navbar-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-content">
+                        @Html.Partial("_MenuBar")
+                        <div class="navbar-info-group">
+                            <div class="navbar-info">
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p><small>hotline</small><span>0123456789</span></p>
+                            </div>
+                            <div class="navbar-info">
+                                <i class="icofont-ui-email"></i>
+                                <p>
+                                    <small>email</small><span>contact@Su</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End menu pc -->
+    <section class="inner-section single-banner">
+        <div class="container">
+
+            <h2>Sữa Kun </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Sữa kun
+                </li>
+            </ol>
+        </div>
+    </section>
+    <section>
+        @RenderBody()
+    </section>
+    <!--Start footer-->
+    <section class="intro-part">
+        <div class="container">
+            <div class="row intro-content">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-truck"></i></div>
+                        <div class="intro-content">
+                            <h5>miễn phí giao hàng</h5>
+                            <p>
+                                Cho đơn hàng từ 200.000 trở lên. (Áp dụng nội thành Hà Nội)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="intro-content">
+                            <h5>Hoàn tiền 100%</h5>
+                            <p>Đổi trả hoàn tiền 100% không cần lý do</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-headset"></i></div>
+                        <div class="intro-content">
+                            <h5>hỗ trợ 24/7</h5>
+                            <p>Đội ngũ hỗ trợ giải quyết vấn đề 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon"><i class="fas fa-lock"></i></div>
+                        <div class="intro-content">
+                            <h5>Thanh toán nhanh</h5>
+                            <p>Hỗ trợ các phương thức thanh toán an toàn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <a class="footer-logo" href="#">
+                            <img src="https://theme.hstatic.net/200000077559/1000684446/14/logo.png?v=10"
+                                 alt="logo" />
+                        </a>
+                        <p class="footer-desc">
+                            Sữa Kun
+                        </p>
+                        <ul class="footer-social">
+                            <li><a class="icofont-facebook" href="#"></a></li>
+                            <li><a class="icofont-twitter" href="#"></a></li>
+                            <li><a class="icofont-linkedin" href="#"></a></li>
+                            <li><a class="icofont-instagram" href="#"></a></li>
+                            <li><a class="icofont-pinterest" href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget contact">
+                        <h3 class="footer-title">liên hệ</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="icofont-ui-email"></i>
+                                <p>
+                                    <span>contact@suakun.vn</span>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p>
+                                    <span>0123456789</span>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="icofont-location-pin"></i>
+                                <p>Head Office: 12 Khuất Duy Tiến, Thanh Xuân, Hà Nội.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="footer-widget">
+                        <h3 class="footer-title">hướng dẫn & hỗ trợ</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                <li><a href="#">Chính sách đổi trả</a></li>
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Hệ thống siêu thị</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-sm-6 col-xl-3">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">Download App</h3>
+                            <p class="footer-desc">
+                                Ứng dụng Eco Mart đã có trên Google Play & App Store. Tải ứng
+                                dụng ngay!
+                            </p>
+                            <div class="footer-app">
+                                <a href="#"><img src="~/wwwroot/Client/images/google-store.png" alt="google" /></a><a href="#"><img src="~/wwwroot/Client/images/app-store.png" alt="app" /></a>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p class="footer-copytext">
+                            &copy; Bản quyền thuộc về nhóm 5 ASP.NET
+                        </p>
+                        <div class="footer-card">
+                            <a href="#"><img src="~/wwwroot/Client/images/payment/jpg/01.jpg" alt="payment" /></a><a href="#"><img src="~/wwwroot/Client/images/payment/jpg/02.jpg" alt="payment" /></a><a href="#"><img src="~/wwwroot/Client/images/payment/jpg/03.jpg" alt="payment" /></a><a href="#">
+                                <img src="~/wwwroot/Client/images/payment/jpg/04.jpg" alt="payment" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/popper.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/nice-select.min.js"></script>
+    <script src="js/vendor/venobox.min.js"></script>
+    <script src="js/vendor/countdown.min.js"></script>
+    <script src="js/vendor/slick.min.js"></script>
+    <script src="js/custom/nice-select.js"></script>
+    <script src="js/custom/countdown.js"></script>
+    <script src="js/custom/accordion.js"></script>
+    <script src="js/custom/venobox.js"></script>
+    <script src="js/custom/slick.js"></script>
+    <script src="js/custom/main.js"></script>
+</body>
+<!-- Mirrored from mironmahmud.com/organe/assets/ltr/category.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jun 2021 14:24:31 GMT -->
+</html>
+

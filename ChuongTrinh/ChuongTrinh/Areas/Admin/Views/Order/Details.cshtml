@@ -1,0 +1,98 @@
+﻿@model ChuongTrinh.Models.OrderDTO
+@using System.Collections.Generic;
+@using System.Globalization;
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal col-md-12">
+    <h6 style="color:gray;">Hóa đơn</h6>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaHD, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MaHD, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaKH, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+           <textarea class="form-control" cols="200" disabled >@Model.GhiChu</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                IDictionary<int, string> status = new Dictionary<int, string>();
+                status.Add(1, "Đã thanh toán");
+                status.Add(2, "Chưa thanh toán");
+                status.Add(3, "Đã hủy");
+                status.Add(4, "Đang giao");
+                foreach (var item in status)
+                {
+                    if (Model.TinhTrang == item.Key)
+                    { 
+                        
+                            <input name="TinhTrang" value="@item.Value" class="form-control" disabled />
+                        
+                    }
+                }
+            }
+        </div>
+    </div>
+    <h4 style="margin-top:10px;margin-bottom:10px;">Danh sách mặt hàng</h4>
+    <table class="table table-hover" style="border-radius:10px;background-color:aquamarine;">
+        <thead>
+            <th>Ảnh</th>
+            <th>Tên SP</th>
+            <th>Giá bán</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            
+        </thead>
+            <tbody>
+                @{
+                    double total = 0;
+                    foreach (var item in Model.Products)
+                    {
+                        <tr>
+                            <td><img src="~/wwwroot/Client/images/products/@item.HinhAnh" width="100" height="100"/></td>
+                            <td>@item.TenSP</td>
+                            <td>@item.GiaBan.ToString("C0",CultureInfo.CurrentCulture).Substring(1) VNĐ</td>
+                            <td>@item.SoLuong</td>
+                            <td>@item.TongTien.ToString("C0", CultureInfo.CurrentCulture).Substring(1) VNĐ</td>
+
+                        </tr>
+                        total += Convert.ToDouble(item.SoLuong * item.GiaBan);
+                    }
+                }
+            </tbody>
+        <tfoot>
+            <td colspan="5" style="background-color:gray; border-radius:10px; color:white;">Thanh toán : @total.ToString("C0", CultureInfo.CurrentCulture).Substring(1) VNĐ</td>
+        </tfoot>
+    </table>
+
+    <div class="col-md-12">
+        <a class="btn btn-outline-warning mt-2 mb-2 col-md-12" href="@Url.Action("Index","Order")" style="float:right;">Trở về</a>
+    </div>
+
+
+</div>
+}
+

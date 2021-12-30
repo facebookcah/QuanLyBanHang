@@ -1,0 +1,33 @@
+﻿@model ChuongTrinh.Models.SanPham
+@using System.Globalization;
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+}
+
+<div class="row col-md-12 mb-5 " style="margin-left:100px;">
+    <div class="col-md-4" >
+        <img width="400" height="400" src="~/wwwroot/Client/images/products/h5.png" alt="" />
+    </div>
+    <div class="col-md-8">
+        <h3 style="margin-bottom:10px;">Chi tiết sản phẩm</h3>
+        <div class="col-md-8" style="border:groove;border-radius:20px;margin-bottom:10px;padding:10px;">
+            <h4 style=" margin-bottom:20px;"><b>@Model.TenSP</b></h4>
+            <p><b>Khối lượng</b> : @Model.KhoiLuong</p>
+            <p><b>Giá</b> : @Model.GiaBan.ToString("C0",CultureInfo.CurrentCulture).Substring(1) <u>đ</u></p>
+            <p><b>Loại</b> : @Model.DanhMuc.TenDanhMuc</p>
+            <p><b>Trạng thái</b> : @if (@Model.TrangThai == true)
+            {
+            <i>Còn hàng</i>
+            }
+            else { <i>Hết hàng</i>}</p>
+            <b>Mô tả</b>
+            <p>@Model.MoTa</p>
+        </div>
+        <div class="col-md-6">
+            <a href="@Url.Action("Buy","Product",new { id=Model.MaSP})" class="btn btn-success">Mua ngay</a>
+            <a href="@Url.Action("Cart","Product",new { id=Model.MaSP})" class="btn btn-warning"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+        </div>
+    </div>
+    
+</div>

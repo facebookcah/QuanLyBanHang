@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<ChuongTrinh.Models.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+}
+<style>
+    .pagination li{
+        padding: 10px;
+        margin-top:20px;
+        
+    }
+</style>
+<section class="section recent-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-12">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="~/wwwroot/Client/images/products/@item.HinhAnh"
+                                 alt="product" style="width:100px;height:150px;display: block;margin-left: auto;margin-right: auto;width: 50%;" />
+                        </div>
+                        <div class="product-content">
+                            <h6 class="product-name">
+                                <a href="@Url.Action("Details", "Product", new { id = item.MaSP })">@item.TenSP</a>
+                            </h6>
+                            <h6 class="product-price">
+                                <span class="hdk-price">@string.Format("{0:#,##}", item.GiaBan) vnđ</span>
+                            </h6>
+                            <button class="product-add" onclick="addToCart(@item.MaSP)" title="Thêm vào giỏ">
+                                <a href="@Url.Action("Cart","Main",new { masp=item.MaSP})" style="color:black;"><i class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagination">
+                    <button>
+                        @Html.PagedListPager(Model, page => Url.Action("Main", "Main", new { page = page }))
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+

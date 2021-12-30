@@ -1,0 +1,19 @@
+﻿@using ChuongTrinh.Models
+@{ 
+    var list = Session["categories"] as List<DanhMuc>;
+}
+<ul class="navbar-list">
+    <li class="navbar-item dropdown">
+        @Html.ActionLink("Trang Chủ", "Main", "Main")
+    </li>
+    <li class="navbar-link dropdown">
+        <a class="navbar-link dropdown-arrow" href="#">danh mục </a>
+        <ul class="dropdown-position-list">
+            @foreach (var item in list)
+            { 
+            <li><a href="@Url.Action("Main","Main",new { madm=item.MaDanhMuc})">@item.TenDanhMuc</a></li>
+            }
+
+        </ul>
+    </li>
+</ul>
