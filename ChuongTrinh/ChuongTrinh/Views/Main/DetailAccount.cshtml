@@ -1,0 +1,59 @@
+﻿@using ChuongTrinh.Models;
+
+@model TaiKhoan
+@{
+    ViewBag.Title = "DetailAccount";
+    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+}
+
+<div class="row col-md-12">
+    <div class="col-md-4" style="margin-left:100px;">
+        <img src="~/wwwroot/Client/images/avatar/01.jpg" width="250" height="250" style="border-radius:10000px;" />
+    </div>
+    <div class="col-md-6">
+        <label class="label-text" style="color:black;">Tên đăng nhập</label>
+        <input class="form-control" value="@Model.TenDangNhap.Trim()" disabled />
+
+        <label class="label-text" style="color:black;">Mật khẩu</label>
+        <input class="form-control" value="@Model.MatKhau.Trim()" disabled />
+        <label class="label-text" style="color:black;">Họ tên</label>
+        <input class="form-control" value="@Model.KhachHang.TenKH.Trim()" disabled />
+        <label class="label-text" style="color:black;">Địa chỉ</label>
+        <input class="form-control" value="@Model.KhachHang.DiaChi.Trim()" disabled />
+        <label class="label-text" style="color:black;">Số điện thọai</label>
+        <input class="form-control" value="@Model.KhachHang.SoDienThoai.Trim()" disabled />
+        <label class="label-text" style="color:black;">Giới tính</label>
+        @if (Model.KhachHang.GioiTinh == true)
+        {
+            <input class="form-control" value="Nam" disabled />
+        }
+        else
+        {
+            <input class="form-control" value="Nữ" disabled />
+        }
+        <label class="label-text" style="color:black;">Ngày sinh</label>
+        @if (Model.KhachHang.NgaySinh != null)
+        {
+            <input class="form-control" value="@Model.KhachHang.NgaySinh.ToString().Substring(0, 9)" disabled />
+        }
+        else
+        {
+            <input class="form-control" value="" disabled />
+        }
+        <label class="label-text" style="color:black;">Email</label>
+        <input class="form-control" value="@Model.KhachHang.Email" disabled />
+
+    </div>
+
+
+</div>
+
+<div class="col-md-12 mt-5 mb-3" style="margin-left:630px;">
+    <a href="@Url.Action("EditInfor","Main",new { id=Model.KhachHang.MaKH})" class="btn btn-outline-warning">Cập nhật thông tin</a>
+    <a href="@Url.Action("EditAccount","Main",new { id=Model.MaTK})" class="btn btn-outline-warning">Đổi mật khẩu</a>
+    <a href="@Url.Action("Logout","Main",new { code=Model.MaTK})" class="btn btn-sm btn-outline-danger">Đăng xuất</a>
+</div>
+
+<script>
+        window.scrollTo(0, 500);
+</script>

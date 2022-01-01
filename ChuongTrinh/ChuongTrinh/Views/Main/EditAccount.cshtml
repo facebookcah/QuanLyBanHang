@@ -1,0 +1,58 @@
+﻿@model ChuongTrinh.Models.TaiKhoan
+@{
+    ViewBag.Title = "EditAccount";
+    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+}
+<h2 style="color:gray;">Cập nhật mật khẩu</h2>
+<hr />
+@using (Html.BeginForm("EditAccount", "Main", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" style="margin-left:200px;">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input name="MaKH" value="@Model.MaKH" hidden />
+    <input name="MaTK" value="@Model.MaTK" hidden />
+    <input name="MaQuyen" value="@Model.MaQuyen" hidden />
+    <input name="TenDangNhap" value="@Model.TenDangNhap" hidden />
+
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    var pass = Model.MatKhau.Trim();
+                 }
+                <input name="MatKhau" value="@pass" class="form-control"/>
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+
+
+        <input name="MaQuyen" value="@Model.MaQuyen" hidden />
+
+
+
+        <div class="col-md-12" >
+            <input type="submit" value="Cập nhật" class="btn btn-outline-success mt-2" />
+            <a class="btn btn-outline-warning mt-2" href="@Url.Action("Main","Main")">Hủy</a>
+        </div>
+</div>
+}
+
+
+    <script>
+        window.scrollTo(0, 500);
+    </script>
+
+

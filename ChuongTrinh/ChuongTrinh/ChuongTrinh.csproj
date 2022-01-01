@@ -362,9 +362,9 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
-    <Compile Include="Controllers\AdminMainController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -377,9 +377,11 @@
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\OrderDTO.cs" />
+    <Compile Include="Models\ProductInCartDTO.cs" />
     <Compile Include="Models\ProductDTO.cs" />
     <Compile Include="Models\QuanLyBanHangDB.cs" />
     <Compile Include="Models\Quyen.cs" />
+    <Compile Include="Models\RequỉedAttribute.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
@@ -415,15 +417,21 @@
     <Content Include="Areas\Admin\Views\TaiKhoans\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoans\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoans\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Shared\_Layout_Client.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
-    <Content Include="Views\AdminMain\AdminMain.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
-    <Content Include="Views\Main\Cart.cshtml" />
     <Content Include="Views\Main\Login.cshtml" />
+    <Content Include="Views\Main\CartOfAccount.cshtml" />
+    <Content Include="Views\Main\Order.cshtml" />
+    <Content Include="Views\Main\UpdateCart.cshtml" />
+    <Content Include="Views\Main\NoProductInCart.cshtml" />
+    <Content Include="Views\Main\DetailAccount.cshtml" />
+    <Content Include="Views\Main\EditInfor.cshtml" />
+    <Content Include="Views\Main\EditAccount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -558,7 +566,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MainAdmin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
