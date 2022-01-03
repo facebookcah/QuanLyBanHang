@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ChuongTrinh.Models;
+using System.IO;
+using PagedList;
 
 namespace ChuongTrinh.Areas.Admin.Controllers
 {
@@ -20,7 +22,7 @@ namespace ChuongTrinh.Areas.Admin.Controllers
             var sanPhams = db.SanPhams.Include(s => s.DanhMuc);
             return View(sanPhams.ToList());
         }
-
+        
         // GET: Admin/Product/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,10 +50,19 @@ namespace ChuongTrinh.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,TrangThai,KhoiLuong,GiaBan,MoTa,HinhAnh,MaDanhMuc")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,TrangThai,KhoiLuong,GiaBan,MoTa,HinhAnh,MaDanhMuc")] SanPham sanPham,
+           HttpPostedFileBase file )
         {
             if (ModelState.IsValid)
             {
+                //Kiểm tra nếu có ảnh thì lưu ảnh vào server và tên ảnh vào database
+                if (file != null && file.ContentLength>0 )
+                {
+                    string fileName = Path.GetFileName(file.FileName);
+                    string pathServer = Path.Combine(Server.MapPath("~/wwwroot/Client/images/products"), fileName);
+                    file.SaveAs(pathServer);
+                    sanPham.HinhAnh = fileName;
+                }    
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +93,21 @@ namespace ChuongTrinh.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,TrangThai,KhoiLuong,GiaBan,MoTa,HinhAnh,MaDanhMuc")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,TrangThai,KhoiLuong,GiaBan,MoTa,HinhAnh,MaDanhMuc")] SanPham sanPham,
+            HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                // Kiem tra neu co anh thi luu anh vao server va ten anh vao database
+                if (file != null && file.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(file.FileName);
+                    string pathServer = Path.Combine(Server.MapPath("/wwwroot/Client/images/products"), fileName);
+
+                    file.SaveAs(pathServer);
+                    sanPham.HinhAnh = fileName;
+
+                }
                 db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +137,14 @@ namespace ChuongTrinh.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             SanPham sanPham = db.SanPhams.Find(id);
+            //lấy danh sách hóa đơn 
+            ICollection<ChiTietHoaDon> chiTietHoaDons = sanPham.ChiTietHoaDons;
+            //Kiểm tra nếu sản phẩm tồn tại trong hóa đơn thì thông báo lỗi không thể xóa
+            if (chiTietHoaDons != null && chiTietHoaDons.Count > 0)
+            {
+                ModelState.AddModelError("messages", "Sản phẩm này tồn tại trong hóa đơn, không thể xóa");
+                return View(sanPham);
+            }
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();
             return RedirectToAction("Index");
