@@ -39,6 +39,7 @@ namespace ChuongTrinh.Areas.Admin.Controllers
         // GET: Admin/TaiKhoans/Create
         public ActionResult Create()
         {
+            
             ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TenKH");
             ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen");
             return View();
@@ -53,6 +54,22 @@ namespace ChuongTrinh.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var hasAccount = db.TaiKhoans.Any(i => i.MaKH == taiKhoan.MaKH);
+                var hasUserName = db.TaiKhoans.Any(i => i.TenDangNhap.Trim() == taiKhoan.TenDangNhap.Trim());
+                if (hasAccount)
+                {
+                    ViewBag.Error = "Khách hàng này đã có tài khoản";
+                    ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TenKH", taiKhoan.MaKH);
+                    ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
+                    return View(taiKhoan);
+                }
+                if (hasUserName)
+                {
+                    ViewBag.Error = "Tên đăng nhập đã được sử dụng !";
+                    ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TenKH", taiKhoan.MaKH);
+                    ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
+                    return View(taiKhoan);
+                }
                 db.TaiKhoans.Add(taiKhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,11 +110,12 @@ namespace ChuongTrinh.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
             ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TenKH", taiKhoan.MaKH);
             ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
         }
-
+       
         // GET: Admin/TaiKhoans/Delete/5
         public ActionResult Delete(int? id)
         {

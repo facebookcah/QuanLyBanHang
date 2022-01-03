@@ -21,6 +21,10 @@
                         <div class="account-title">
                             <h4>Đơn hàng của bạn</h4>
                         </div>
+                        @if (ViewBag.Success != null)
+                        { 
+                            <span style="text-align:center;" class="alert alert-success">@ViewBag.Success</span>
+                        }
                         <div class="account-content">
                             <div class="table-scroll">
                                 <table class="table-list">
@@ -74,9 +78,14 @@
                             </div>
 
                          
-                                <div class="checkout-proced col-md-12">
-                                    <a href="@Url.Action("Main","Main")" class="btn btn-inline">Tiếp tục mua sắm</a>
-                                </div>
+                            <div class="checkout-proced col-md-12">
+                                <a href="@Url.Action("Main","Main")" class="btn btn-inline">Tiếp tục mua sắm</a>
+                                @if (ViewBag.Success == null)
+                                {
+                                    <a href="@Url.Action("CancleOrder","Main")" class="btn btn-danger">Hủy đơn hàng</a>
+                                }
+
+                            </div>
                             
 
                             <input id="quantity1" value="10" hidden />

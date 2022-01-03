@@ -381,6 +381,7 @@
     <Compile Include="Models\ProductDTO.cs" />
     <Compile Include="Models\QuanLyBanHangDB.cs" />
     <Compile Include="Models\Quyen.cs" />
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Models\RequỉedAttribute.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\sysdiagram.cs" />
@@ -432,6 +433,7 @@
     <Content Include="Views\Main\DetailAccount.cshtml" />
     <Content Include="Views\Main\EditInfor.cshtml" />
     <Content Include="Views\Main\EditAccount.cshtml" />
+    <Content Include="Views\Main\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

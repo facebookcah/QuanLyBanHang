@@ -142,7 +142,7 @@ namespace ChuongTrinh.Controllers
             order.GhiChu = "";
             db.HoaDons.Add(order);
             db.SaveChanges();
-
+            Session["MaHD"] = order.MaHD;
             //lấy thông tin từ giỏ hàng của khách hàng
             //chuyển thông tin từ giở hàng vào đơn hàng
             List<ProductInCartDTO> products = new List<ProductInCartDTO>();
@@ -284,6 +284,50 @@ namespace ChuongTrinh.Controllers
             }
 
             return RedirectToAction("DetailAccount", "Main");
+        }
+
+        public ActionResult Register()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(Register register)
+        {
+            if (register.TenKH != null && register.GioiTinh != null && register.SoDienThoai!=null && register.DiaChi!=null && register.UserName!=null && register.Password!=null &&register.Password==register.RePassword && register.Email!=null)
+            {
+                KhachHang client = new KhachHang();
+                client.TenKH = register.TenKH;
+                client.GioiTinh = register.GioiTinh;
+                client.SoDienThoai = register.SoDienThoai;
+                client.DiaChi = register.DiaChi;
+                db.KhachHangs.Add(client);
+                db.SaveChanges();
+                TaiKhoan account = new TaiKhoan();
+                account.TenDangNhap = register.UserName;
+                account.MatKhau = register.Password;
+                account.MaKH = client.MaKH;
+                account.MaQuyen = 1;
+                db.TaiKhoans.Add(account);
+                db.SaveChanges();
+                
+            }
+            else
+            {
+                return View(register);
+            }
+            return RedirectToAction("Login");
+        }
+        public ActionResult CancleOrder()
+        {
+            var maHD = Session["MaHD"] ;
+            var order = db.HoaDons.Find(Convert.ToInt32(maHD));
+                db.Entry(order).State = EntityState.Modified;
+            order.TinhTrang = 3;
+            db.SaveChanges();
+            ViewBag.Success = "Hủy đơn hàng thành công";
+            return RedirectToAction("Order");
+           
         }
 
 

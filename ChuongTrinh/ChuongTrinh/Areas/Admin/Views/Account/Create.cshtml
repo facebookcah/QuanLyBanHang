@@ -15,7 +15,7 @@
         <h6 style="color:gray;">Tài khoản</h6>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-      
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,13 +43,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
         <div class="form-group">
             @Html.LabelFor(model => model.MaKH, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -60,10 +53,15 @@
 
 
         <div class="col-md-2">
-            <input type="submit" value="Tạo mới" class="btn btn-outline-success mt-2" />
-            <a class="btn btn-outline-warning mt-2" href="@Url.Action("Index","Account")">Trở về</a>
+            <input type="submit" value="Tạo mới" class="btn btn-outline-success mt-2 mb-5" />
+            <a class="btn btn-outline-warning mt-2 mb-5" href="@Url.Action("Index","Account")">Trở về</a>
         </div>
     </div>
 }
 
-
+@if (ViewBag.Error != null)
+{
+<div class="col-md-12 ">
+    <span class="col-md-12 alert alert-danger">@ViewBag.Error</span>
+</div>
+}
