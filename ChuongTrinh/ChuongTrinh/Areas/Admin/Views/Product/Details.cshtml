@@ -1,66 +1,67 @@
 ﻿@model ChuongTrinh.Models.SanPham
-
+@using System.Collections.Generic;
+@using System.Globalization;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2> Chi tiết</h2>
 
 <div>
-    <h4>SanPham</h4>
+    <h4>Sản phẩm</h4>
     <hr />
     <dl class="dl-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DanhMuc.TenDanhMuc, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md">
+            @Html.EditorFor(model => model.DanhMuc.TenDanhMuc, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KhoiLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.KhoiLuong, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md">
+                @{
+                    var price = Model.GiaBan.ToString("C0", CultureInfo.CurrentCulture).Substring(1);
+                 }
+                <input value="@price" disabled class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
         <dt>
-            @Html.DisplayNameFor(model => model.DanhMuc.TenDanhMuc)
-        </dt>
+            @*  @{
+                    string ImagePath = "~/wwwroot/Client/images/products/" + Model.HinhAnh;
+                }
+                <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
+                <br />*@
+            <img src="~/wwwroot/Client/images/products/@Model.HinhAnh" width="200" height="200" />
 
-        <dd>
-            @Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KhoiLuong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KhoiLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
         </dt>
 
         <dd>
@@ -70,6 +71,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaSP }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-outline-success mt-2" href="@Url.Action("Edit","Product",new { id=Model.MaSP})">Chỉnh sửa</a>
+    <a class="btn btn-outline-warning mt-2" href="@Url.Action("Index","Product")">Trở về</a>
 </p>

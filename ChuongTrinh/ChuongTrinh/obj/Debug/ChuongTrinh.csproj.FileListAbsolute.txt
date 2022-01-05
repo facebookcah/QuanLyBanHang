@@ -313,4 +313,3 @@ C:\Users\84835\Desktop\QuanLyBanHang\ChuongTrinh\ChuongTrinh\obj\Debug\ChuongTri
 C:\Users\84835\Desktop\QuanLyBanHang\ChuongTrinh\ChuongTrinh\obj\Debug\ChuongTrinh.csproj.CopyComplete
 C:\Users\84835\Desktop\QuanLyBanHang\ChuongTrinh\ChuongTrinh\obj\Debug\ChuongTrinh.dll
 C:\Users\84835\Desktop\QuanLyBanHang\ChuongTrinh\ChuongTrinh\obj\Debug\ChuongTrinh.pdb
-C:\Users\84835\Desktop\QuanLyBanHang\ChuongTrinh\ChuongTrinh\obj\Debug\ChuongTrinh.csprojAssemblyReference.cache
