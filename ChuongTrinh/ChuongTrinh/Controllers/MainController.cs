@@ -306,16 +306,28 @@ namespace ChuongTrinh.Controllers
                 client.GioiTinh = register.GioiTinh;
                 client.SoDienThoai = register.SoDienThoai;
                 client.DiaChi = register.DiaChi;
+                client.NgaySinh = register.NgaySinh;
+                client.Email = register.Email;
+                client.DiaChi = register.DiaChi;
                 db.KhachHangs.Add(client);
                 db.SaveChanges();
-                TaiKhoan account = new TaiKhoan();
-                account.TenDangNhap = register.UserName;
-                account.MatKhau = register.Password;
-                account.MaKH = client.MaKH;
-                account.MaQuyen = 1;
-                db.TaiKhoans.Add(account);
-                db.SaveChanges();
-                
+                var userName = db.TaiKhoans.Where(i=>i.TenDangNhap.ToLower()==register.UserName.ToLower()).FirstOrDefault();
+                if (userName != null)
+                {
+                    ViewBag.Error = "Tên đăng nhập đã tồn tại ! Vui lòng chọn tên khác";
+                    return View(register);
+                }
+                else
+                {
+                    TaiKhoan account = new TaiKhoan();
+                    account.TenDangNhap = register.UserName;
+                    account.MatKhau = register.Password;
+                    account.MaKH = client.MaKH;
+                    account.MaQuyen = 1;
+                    db.TaiKhoans.Add(account);
+                    db.SaveChanges();
+                }
+
             }
             else
             {
