@@ -16,6 +16,11 @@ namespace ChuongTrinh.Controllers
         // GET: Main
         // này là controller main client nha là màn Home á
         QuanLyBanHangDB db = new QuanLyBanHangDB();
+        public ActionResult About()
+        {
+            Session["categories"] = db.DanhMucs.ToList();
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

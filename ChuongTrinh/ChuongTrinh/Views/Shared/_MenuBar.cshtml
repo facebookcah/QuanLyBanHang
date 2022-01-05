@@ -10,10 +10,14 @@
         <a class="navbar-link dropdown-arrow" href="#">danh mục </a>
         <ul class="dropdown-position-list">
             @foreach (var item in list)
-            { 
-            <li><a href="@Url.Action("Main","Main",new { madm=item.MaDanhMuc})">@item.TenDanhMuc</a></li>
+            {
+                <li><a href="@Url.Action("Main","Main",new { madm=item.MaDanhMuc})">@item.TenDanhMuc</a></li>
             }
 
         </ul>
+    </li>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <li class="navbar-item dropdown">
+        @Html.ActionLink("Giới thiệu", "About", "Main")
     </li>
 </ul>
