@@ -164,3 +164,9 @@
   cursor: not-allowed;
   background-color: #ffffff;
 }
+p {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

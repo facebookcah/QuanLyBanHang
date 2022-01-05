@@ -6,60 +6,55 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
+<h2> Xoá</h2>
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DanhMuc.TenDanhMuc)
-        </dt>
+        <h4>Sản phẩm</h4>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DanhMuc.TenDanhMuc, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md">
+            @Html.EditorFor(model => model.DanhMuc.TenDanhMuc, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)
-        </dd>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md">
+            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSP)
-        </dt>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.KhoiLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.KhoiLuong, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSP)
-        </dd>
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
+            <div class="col-md">
+                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KhoiLuong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KhoiLuong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md">
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            <img src="~/wwwroot/Client/images/products/@Model.HinhAnh" width="200" height="200" />
         </dt>
 
         <dd>
@@ -72,9 +67,14 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("Trở lại", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Xoá" class="btn btn-outline-success mt-2" />
+    <a class="btn btn-outline-warning mt-2" href="@Url.Action("Index","Product")">Trở về</a>
+</div>
     }
 </div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
