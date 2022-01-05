@@ -434,6 +434,7 @@
     <Content Include="Views\Main\EditInfor.cshtml" />
     <Content Include="Views\Main\EditAccount.cshtml" />
     <Content Include="Views\Main\Register.cshtml" />
+    <Content Include="Views\Main\Cancel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -326,8 +326,17 @@ namespace ChuongTrinh.Controllers
             order.TinhTrang = 3;
             db.SaveChanges();
             ViewBag.Success = "Hủy đơn hàng thành công";
-            return RedirectToAction("Order");
+            return RedirectToAction("Main");
            
+        }
+
+        [HttpPost]
+        public ActionResult Search(int? from,int? to,int? page)
+        {
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var products = db.SanPhams.Where(i => i.GiaBan >= from && i.GiaBan <= to).ToList().ToPagedList(pageNumber,pageSize);
+            return View("Main",products);
         }
 
 

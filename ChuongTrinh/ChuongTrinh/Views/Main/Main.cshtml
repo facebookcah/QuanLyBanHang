@@ -14,13 +14,27 @@
 <section class="section recent-part">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>
-                    </h2>
+
+            @using (Html.BeginForm("Search", "Main", FormMethod.Post))
+            {
+                <div class="col-sm-12">
+
+                    <div class="shop-widget">
+                        <h6 class="shop-widget-title">Lọc theo giá</h6>
+                        <form>
+                            <div class="shop-widget-group">
+                                <input type="number" name="from" placeholder="Bắt đầu"><input type="number" name="to" placeholder="Kết thúc">
+                            </div>
+                            <input type="submit" class="shop-widget-btn " value="Tìm" />
+                            
+                        </form>
+                    </div>
+
                 </div>
-            </div>
+            }
+
         </div>
+        <br />
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
             @foreach (var item in Model)
             {
@@ -38,12 +52,12 @@
                                 <span class="hdk-price">@string.Format("{0:#,##}", item.GiaBan) vnđ</span>
                             </h6>
                             <button class="product-add" onclick="addToCart(@item.MaSP)" title="Thêm vào giỏ">
-                                <a href="@Url.Action("Cart","Main",new { masp=item.MaSP})" style="color:black;"><i class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></a>
+                                <a href="@Url.Action("Cart", "Main", new { masp = item.MaSP })" style="color:black;"><i class="fas fa-shopping-basket"></i><span>Thêm vào giỏ hàng</span></a>
                             </button>
                         </div>
                     </div>
                 </div>
-            }
+                }
         </div>
         <div class="row">
             <div class="col-md-12">
